@@ -11,5 +11,7 @@ namespace Akla.SharedData.Models
         public string Street { get; set; }
 
         public long Customer_Id { get; set; }
+
+        public Customer Customer { get; set; }
     }
 }

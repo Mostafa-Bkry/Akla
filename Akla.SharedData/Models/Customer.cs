@@ -14,5 +14,10 @@ namespace Akla.SharedData.Models
         public string PasswordHashed { get; set; }
 
         public DateTime Join_Date { get; set; }
+
+        public virtual ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
+        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public Review? Review { get; set; }
+        public ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
     }
 }
