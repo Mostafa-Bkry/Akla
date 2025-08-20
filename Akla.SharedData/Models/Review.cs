@@ -16,5 +16,6 @@ namespace Akla.SharedData.Models
         public long MenuItem_Id { get; set; }
 
         public Customer Customer { get; set; }
+        public MenuItem MenuItem { get; set; }
     }
 }

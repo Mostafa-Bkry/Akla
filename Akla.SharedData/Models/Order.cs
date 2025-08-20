@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Akla.SharedData.Models
+﻿namespace Akla.SharedData.Models
 {
     public class Order : BaseEntity
     {
@@ -15,5 +13,6 @@ namespace Akla.SharedData.Models
 
         public Customer Customer { get; set; }
         public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
+        public Delivery? Delivery { get; set; }
     }
 }

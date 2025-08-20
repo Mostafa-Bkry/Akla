@@ -13,5 +13,7 @@ namespace Akla.SharedData.Models
         public string LocationZone { get; set; }
 
         public bool IsAvailable { get; set; }
+
+        public ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Akla.SharedData.Models
+﻿namespace Akla.SharedData.Models
 {
     public class OrderItem : BaseEntity
     {
@@ -12,5 +10,8 @@ namespace Akla.SharedData.Models
 
         public long MenuItem_Id { get; set; }
         public long Order_Id { get; set; }
+
+        public Order Order { get; set; }
+        public MenuItem MenuItem { get; set; }
     }
 }

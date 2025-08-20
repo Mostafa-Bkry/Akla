@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Akla.SharedData.Models
+﻿namespace Akla.SharedData.Models
 {
     public class Driver : BaseEntity
     {
@@ -12,5 +10,7 @@ namespace Akla.SharedData.Models
 
         [MaxLength(20)]
         public string License_Plate { get; set; }
+
+        public ICollection<Delivery> Deliveries { get; set; } = new HashSet<Delivery>();
     }
 }

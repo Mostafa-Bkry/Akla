@@ -17,5 +17,8 @@ namespace Akla.SharedData.Models
         public int Preparation_Time { get; set; }
 
         public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
+        public ICollection<MenuCategoryItem> MenuCategoryItems { get; set; } = new HashSet<MenuCategoryItem>();
+        public ICollection<MenuItemPromotion> MenuItemPromotions { get; set; } = new HashSet<MenuItemPromotion>();
     }
 }
