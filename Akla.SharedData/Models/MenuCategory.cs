@@ -10,6 +10,6 @@ namespace Akla.SharedData.Models
         [Range(1, int.MaxValue)]
         public int Ordering { get; set; }
 
-        public ICollection<MenuCategoryItem> MenuCategoryItems { get; set; } = new HashSet<MenuCategoryItem>();
+        public virtual ICollection<MenuCategoryItem> MenuCategoryItems { get; set; } = new HashSet<MenuCategoryItem>();
     }
 }

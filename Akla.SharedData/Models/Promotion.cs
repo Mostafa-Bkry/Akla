@@ -18,7 +18,7 @@ namespace Akla.SharedData.Models
         public DateTime Start_Date { get; set; }
         public DateTime End_Date { get; set; }
 
-        public ICollection<Image> Images { get; set; } = new HashSet<Image>();
-        public ICollection<MenuItemPromotion> MenuItemPromotions { get; set; } = new HashSet<MenuItemPromotion>();
+        public virtual ICollection<Image> Images { get; set; } = new HashSet<Image>();
+        public virtual ICollection<MenuItemPromotion> MenuItemPromotions { get; set; } = new HashSet<MenuItemPromotion>();
     }
 }

@@ -5,7 +5,7 @@
         public long MenuCategory_Id { get; set; }
         public long MenuItem_Id { get; set; }
 
-        public MenuItem MenuItem { get; set; }
-        public MenuCategory MenuCategory { get; set; }
+        public virtual MenuItem MenuItem { get; set; }
+        public virtual MenuCategory MenuCategory { get; set; }
     }
 }

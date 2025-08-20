@@ -9,10 +9,11 @@
         [MaxLength(255)]
         public string Delivery_Address { get; set; }
 
-        public int Payment_Method_Id { get; set; }
+        public int PaymentMethod_Id { get; set; }
 
-        public Customer Customer { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
-        public Delivery? Delivery { get; set; }
+        public virtual PaymentMethod PaymentMethod { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
+        public virtual Delivery? Delivery { get; set; }
     }
 }

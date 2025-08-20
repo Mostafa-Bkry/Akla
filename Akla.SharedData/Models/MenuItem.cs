@@ -16,10 +16,10 @@ namespace Akla.SharedData.Models
 
         public int Preparation_Time { get; set; }
 
-        public ICollection<Image> Images { get; set; } = new HashSet<Image>();
-        public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
-        public ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
-        public ICollection<MenuCategoryItem> MenuCategoryItems { get; set; } = new HashSet<MenuCategoryItem>();
-        public ICollection<MenuItemPromotion> MenuItemPromotions { get; set; } = new HashSet<MenuItemPromotion>();
+        public virtual ICollection<Image> Images { get; set; } = new HashSet<Image>();
+        public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+        public virtual ICollection<OrderItem> OrderItems { get; set; } = new HashSet<OrderItem>();
+        public virtual ICollection<MenuCategoryItem> MenuCategoryItems { get; set; } = new HashSet<MenuCategoryItem>();
+        public virtual ICollection<MenuItemPromotion> MenuItemPromotions { get; set; } = new HashSet<MenuItemPromotion>();
     }
 }

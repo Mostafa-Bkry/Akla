@@ -14,7 +14,7 @@
         [MaxLength(20)]
         public string PrimaryPhoneNumber { get; set; }
 
-        public ICollection<DvirverPhone> PhoneNumbers { get; set; } = new HashSet<DvirverPhone>();
-        public ICollection<Delivery> Deliveries { get; set; } = new HashSet<Delivery>();
+        public virtual ICollection<DvirverPhone> PhoneNumbers { get; set; } = new HashSet<DvirverPhone>();
+        public virtual ICollection<Delivery> Deliveries { get; set; } = new HashSet<Delivery>();
     }
 }

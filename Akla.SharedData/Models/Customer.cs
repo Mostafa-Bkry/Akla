@@ -13,13 +13,10 @@
 
         public DateTime Join_Date { get; set; }
 
-        public long PaymentMehod_Id { get; set; }
-
-        public PaymentMethod PaymentMethod { get; set; }
-        public ICollection<CustomerPhone> PhoneNumbers { get; set; } = new HashSet<CustomerPhone>();
+        public virtual ICollection<CustomerPhone> PhoneNumbers { get; set; } = new HashSet<CustomerPhone>();
         public virtual ICollection<Address> Addresses { get; set; } = new HashSet<Address>();
         public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
-        public Review? Review { get; set; }
-        public ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
+        public virtual Review? Review { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
     }
 }

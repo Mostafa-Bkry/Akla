@@ -14,6 +14,6 @@ namespace Akla.SharedData.Models
 
         public bool IsAvailable { get; set; }
 
-        public ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
+        public virtual ICollection<Reservation> Reservations { get; set; } = new HashSet<Reservation>();
     }
 }

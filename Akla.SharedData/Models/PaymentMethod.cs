@@ -5,6 +5,6 @@
         [MaxLength(10)]
         public string Method_Name { get; set; }
 
-        public ICollection<Customer> Customers { get; set; } = new HashSet<Customer>();
+        public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
 }
