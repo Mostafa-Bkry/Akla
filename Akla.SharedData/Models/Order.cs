@@ -10,6 +10,7 @@
         public string Delivery_Address { get; set; }
 
         public int PaymentMethod_Id { get; set; }
+        public int Customer_Id { get; set; }
 
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual Customer Customer { get; set; }

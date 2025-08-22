@@ -14,6 +14,9 @@ namespace Akla.SharedData.Models
         [MaxLength(500)]
         public string Special_Requests { get; set; }
 
+        public long RestaurantTable_Id { get; set; }
+        public long Customer_Id { get; set; }
+
         public virtual Customer Customer { get; set; }
         public virtual RestaurantTable RestaurantTable { get; set; }
     }

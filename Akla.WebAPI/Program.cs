@@ -13,7 +13,7 @@ namespace Akla.WebAPI
             // Add services to the container.
             builder.Services.AddDbContext<AklaDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("AklaConnectionString")
-                )
+                ).UseLazyLoadingProxies()
             );
 
             builder.Services.AddControllers();
