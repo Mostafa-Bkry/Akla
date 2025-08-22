@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akla.SharedData", "Akla.SharedData\Akla.SharedData.csproj", "{4B82531D-5D00-4697-B153-CBDA898F39F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akla.Repository", "Akla.Repository\Akla.Repository.csproj", "{1794F6C4-FD09-4919-BCDC-6B6CCAE4C44B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akla.WebAPI", "Akla.WebAPI\Akla.WebAPI.csproj", "{50538F6E-9CFF-4C04-B7EC-6573D354A5D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{4B82531D-5D00-4697-B153-CBDA898F39F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B82531D-5D00-4697-B153-CBDA898F39F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B82531D-5D00-4697-B153-CBDA898F39F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1794F6C4-FD09-4919-BCDC-6B6CCAE4C44B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1794F6C4-FD09-4919-BCDC-6B6CCAE4C44B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1794F6C4-FD09-4919-BCDC-6B6CCAE4C44B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1794F6C4-FD09-4919-BCDC-6B6CCAE4C44B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50538F6E-9CFF-4C04-B7EC-6573D354A5D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50538F6E-9CFF-4C04-B7EC-6573D354A5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50538F6E-9CFF-4C04-B7EC-6573D354A5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50538F6E-9CFF-4C04-B7EC-6573D354A5D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

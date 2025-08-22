@@ -1,0 +1,7 @@
+@Akla.WebAPI_HostAddress = http://localhost:5277
+
+GET {{Akla.WebAPI_HostAddress}}/akla/
+Accept: application/json
+
+###
+//weatherforecast
