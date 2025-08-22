@@ -77,7 +77,7 @@ namespace Akla.SharedData.Context
                 .HasOne(i => i.Promotion)
                 .WithMany(p => p.Images)
                 .HasForeignKey(i => i.Promotion_Id)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<MenuItemPromotion>()
                 .HasOne(mip => mip.Promotion)
