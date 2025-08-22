@@ -5,6 +5,7 @@ namespace Akla.SharedData.Context
 {
     public class AklaDbContext : DbContext
     {
+        #region Models DbSets
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<CustomerPhone> CustomerPhones { get; set; }
@@ -22,7 +23,8 @@ namespace Akla.SharedData.Context
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Reservation> Reservations { get; set; }
         public virtual DbSet<RestaurantTable> RestaurantTables { get; set; }
-        public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; } 
+        #endregion
 
         public AklaDbContext(DbContextOptions<AklaDbContext> options) : base(options) { }
 
@@ -32,97 +34,124 @@ namespace Akla.SharedData.Context
             modelBuilder.Entity<Address>()
                     .HasOne(a => a.Customer)
                     .WithMany(c => c.Addresses)
-                    .HasForeignKey(a => a.Customer_Id);
+                    .HasForeignKey(a => a.Customer_Id)
+                    .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<CustomerPhone>()
                 .HasOne(cp => cp.Customer)
                 .WithMany(c => c.PhoneNumbers)
-                .HasForeignKey(cp => cp.Customer_Id);
+                .HasForeignKey(cp => cp.Customer_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Reservation>()
                 .HasOne(r => r.RestaurantTable)
                 .WithMany(c => c.Reservations)
-                .HasForeignKey(r => r.RestaurantTable_Id);
+                .HasForeignKey(r => r.RestaurantTable_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Reservation>()
                  .HasOne(r => r.Customer)
                  .WithMany(c => c.Reservations)
-                 .HasForeignKey(r => r.Customer_Id);
+                 .HasForeignKey(r => r.Customer_Id)
+                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Review>()
                 .HasOne(r => r.Customer)
                 .WithOne(c => c.Review)
-                .HasForeignKey<Review>(r => r.Customer_Id);
+                .HasForeignKey<Review>(r => r.Customer_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Review>()
                 .HasOne(r => r.MenuItem)
                 .WithMany(m => m.Reviews)
-                .HasForeignKey(r => r.MenuItem_Id);
+                .HasForeignKey(r => r.MenuItem_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Image>()
                 .HasOne(i => i.MenuItem)
                 .WithMany(m => m.Images)
-                .HasForeignKey(i => i.MenuItem_Id);
+                .HasForeignKey(i => i.MenuItem_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Image>()
                 .HasOne(i => i.Promotion)
                 .WithMany(p => p.Images)
-                .HasForeignKey(i => i.Promotion_Id);
+                .HasForeignKey(i => i.Promotion_Id)
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<MenuItemPromotion>()
                 .HasOne(mip => mip.Promotion)
                 .WithMany(p => p.MenuItemPromotions)
-                .HasForeignKey(mip => mip.Promotion_Id);
+                .HasForeignKey(mip => mip.Promotion_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<MenuItemPromotion>()
                 .HasOne(mip => mip.MenuItem)
                 .WithMany(m => m.MenuItemPromotions)
-                .HasForeignKey(mip => mip.MenuItem_Id);
+                .HasForeignKey(mip => mip.MenuItem_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<MenuCategoryItem>()
                 .HasOne(mci => mci.MenuItem)
                 .WithMany(m => m.MenuCategoryItems)
-                .HasForeignKey(mci => mci.MenuItem_Id);
+                .HasForeignKey(mci => mci.MenuItem_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<MenuCategoryItem>()
                 .HasOne(mci => mci.MenuCategory)
                 .WithMany(mc => mc.MenuCategoryItems)
-                .HasForeignKey(mci => mci.MenuCategory_Id);
+                .HasForeignKey(mci => mci.MenuCategory_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.Order)
                 .WithMany(o => o.OrderItems)
-                .HasForeignKey(oi => oi.Order_Id);
+                .HasForeignKey(oi => oi.Order_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.MenuItem)
                 .WithMany(m => m.OrderItems)
-                .HasForeignKey(oi => oi.Order_Id);
+                .HasForeignKey(oi => oi.Order_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.PaymentMethod)
                 .WithMany(pm => pm.Orders)
-                .HasForeignKey(o => o.PaymentMethod_Id);
+                .HasForeignKey(o => o.PaymentMethod_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Delivery>()
                 .HasOne(d => d.Order)
                 .WithOne(o => o.Delivery)
-                .HasForeignKey<Delivery>(d => d.Order_Id);
+                .HasForeignKey<Delivery>(d => d.Order_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Delivery>()
                 .HasOne(d => d.Driver)
                 .WithMany(dr => dr.Deliveries)
-                .HasForeignKey(d => d.Driver_Id);
+                .HasForeignKey(d => d.Driver_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Order>()
                 .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders)
-                .HasForeignKey(o => o.Customer_Id);
+                .HasForeignKey(o => o.Customer_Id)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<DriverPhone>()
                 .HasOne(dph => dph.Driver)
                 .WithMany(d => d.PhoneNumbers)
-                .HasForeignKey(dph => dph.Driver_Id);
+                .HasForeignKey(dph => dph.Driver_Id)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Driver>()
+                .HasIndex(d => d.License_Plate)
+                .IsUnique();
+
+            modelBuilder.Entity<Driver>()
+                .HasIndex(d => d.PrimaryPhoneNumber)
+                .IsUnique();
             #endregion
 
             base.OnModelCreating(modelBuilder);

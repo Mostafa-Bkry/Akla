@@ -1,6 +1,6 @@
 ﻿namespace Akla.SharedData.Models
 {
-    public class MenuCategoryItem
+    public class MenuCategoryItem : BaseEntity
     {
         public long MenuCategory_Id { get; set; }
         public long MenuItem_Id { get; set; }

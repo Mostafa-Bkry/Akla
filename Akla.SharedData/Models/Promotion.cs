@@ -8,7 +8,7 @@ namespace Akla.SharedData.Models
         public string Title { get; set; }
 
         [MaxLength(500)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [MaxLength(50)]
         public string Discount_Type { get; set; }
