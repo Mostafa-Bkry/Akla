@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Akla.SharedData.Models
+﻿namespace Akla.SharedData.Models
 {
     public class RestaurantTable : BaseEntity
     {
