@@ -50,7 +50,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("Customer_Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Customer", b =>
@@ -81,7 +81,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.CustomerPhone", b =>
@@ -104,7 +104,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("Customer_Id");
 
-                    b.ToTable("CustomerPhones");
+                    b.ToTable("CustomerPhones", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Delivery", b =>
@@ -139,7 +139,7 @@ namespace Akla.SharedData.Migrations
                     b.HasIndex("Order_Id")
                         .IsUnique();
 
-                    b.ToTable("Deliveries");
+                    b.ToTable("Deliveries", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Driver", b =>
@@ -178,7 +178,7 @@ namespace Akla.SharedData.Migrations
                     b.HasIndex("PrimaryPhoneNumber")
                         .IsUnique();
 
-                    b.ToTable("Drivers");
+                    b.ToTable("Drivers", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.DriverPhone", b =>
@@ -201,7 +201,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("Driver_Id");
 
-                    b.ToTable("DriverPhones");
+                    b.ToTable("DriverPhones", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Image", b =>
@@ -229,7 +229,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("Promotion_Id");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.MenuCategory", b =>
@@ -250,7 +250,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MenuCategories");
+                    b.ToTable("MenuCategories", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.MenuCategoryItem", b =>
@@ -273,7 +273,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("MenuItem_Id");
 
-                    b.ToTable("MenuCategoryItems");
+                    b.ToTable("MenuCategoryItems", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.MenuItem", b =>
@@ -304,7 +304,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MenuItems");
+                    b.ToTable("MenuItems", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.MenuItemPromotion", b =>
@@ -327,7 +327,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("Promotion_Id");
 
-                    b.ToTable("MenuItemPromotions");
+                    b.ToTable("MenuItemPromotions", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Order", b =>
@@ -364,7 +364,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("PaymentMethod_Id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.OrderItem", b =>
@@ -396,7 +396,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("Order_Id");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItems", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.PaymentMethod", b =>
@@ -414,7 +414,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethods");
+                    b.ToTable("PaymentMethods", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Promotion", b =>
@@ -450,7 +450,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Promotions");
+                    b.ToTable("Promotions", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Reservation", b =>
@@ -489,7 +489,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("RestaurantTable_Id");
 
-                    b.ToTable("Reservations");
+                    b.ToTable("Reservations", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.RestaurantTable", b =>
@@ -518,7 +518,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RestaurantTables");
+                    b.ToTable("RestaurantTables", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Review", b =>
@@ -552,7 +552,7 @@ namespace Akla.SharedData.Migrations
 
                     b.HasIndex("MenuItem_Id");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("Akla.SharedData.Models.Address", b =>
