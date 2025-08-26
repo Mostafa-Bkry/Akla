@@ -1,4 +1,7 @@
-﻿namespace Akla.WebAPI.Controllers
+﻿using Akla.SharedData.Models;
+using Castle.Core.Resource;
+
+namespace Akla.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -12,12 +15,21 @@
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Customer>>> GetAll()
+        public async Task<ActionResult<List<CustomerDTO>>> GetAll()
         {
             try
             {
                 var customers = await _customerServices.GetAllCustomersAsync(isAsNoTracking: true);
-                return Ok(customers ?? new List<Customer>());
+
+                var result = customers.Select(c => new CustomerDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    JoinDate = c.JoinDate,
+                    PhoneNumbers = c.PhoneNumbers.Select(p => p.PhoneNumber).ToList()
+                }).ToList();
+
+                return Ok(result ?? new List<CustomerDTO>());
             }
             catch (Exception ex)
             {
@@ -57,13 +69,23 @@
         }
 
         [HttpGet("{id:long}")]
-        public async Task<ActionResult<Customer>> GetCustomer(long id)
+        public async Task<ActionResult<CustomerDTO>> GetCustomer(long id)
         {
             try
             {
                 var customer = await _customerServices.GetCustomerByIdAsync(id);
-                if(customer != null)
-                    return Ok(customer);
+
+                if (customer != null)
+                {
+                    var result = new CustomerDTO()
+                    {
+                        Id = customer.Id,
+                        Name = customer.Name,
+                        JoinDate = customer.JoinDate,
+                        PhoneNumbers = customer.PhoneNumbers.Select(p => p.PhoneNumber).ToList()
+                    };
+                    return Ok(result);
+                }
 
                 ModelState.AddModelError("", $"Customer With Id = {id} Not Found");
                 return NotFound(ModelState);
@@ -77,16 +99,26 @@
         }
 
         [HttpPost]
-        public async Task<ActionResult<Customer>> AddCustomer(Customer model)
+        public async Task<ActionResult<CustomerDTO>> AddCustomer(Customer model)
         {
             try
             {
                 await _customerServices.AddCustomerAsync(model);
                 var customer = await _customerServices.GetCustomerByIdAsync(model.Id);
-                if(customer != null)
-                    return Ok(customer);
 
-                ModelState.AddModelError("","Faild to add this customer");
+                if (customer != null)
+                {
+                    var result = new CustomerDTO()
+                    {
+                        Id = customer.Id,
+                        Name = customer.Name,
+                        JoinDate = customer.JoinDate,
+                        PhoneNumbers = customer.PhoneNumbers.Select(p => p.PhoneNumber).ToList()
+                    };
+                    return Ok(result);
+                }
+
+                ModelState.AddModelError("", "Faild to add this customer");
             }
             catch (Exception ex)
             {
@@ -97,7 +129,7 @@
         }
 
         [HttpPost("many")]
-        public async Task<ActionResult<Customer>> AddManyCustomers(List<Customer> model)
+        public async Task<ActionResult<CustomerDTO>> AddManyCustomers(List<Customer> model)
         {
             try
             {
@@ -105,8 +137,18 @@
                 var customers = await _customerServices
                     .GetAllCustomersAsync(c => model.Contains(c), true);
 
-                if(customers != null && customers.Count == model.Count) 
-                    return Ok(customers);
+                if (customers != null && customers.Count == model.Count)
+                {
+                    var result = customers.Select(c => new CustomerDTO()
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        JoinDate = c.JoinDate,
+                        PhoneNumbers = c.PhoneNumbers.Select(p => p.PhoneNumber).ToList()
+                    }).ToList();
+
+                    return Ok(result);
+                }
 
                 ModelState.AddModelError("", "Faild to add all these customers or some of them");
             }
@@ -119,7 +161,7 @@
         }
 
         [HttpPut("{id:long}")]
-        public async Task<ActionResult<Customer>> UpdateCustomer(long id, Customer model)
+        public async Task<ActionResult<CustomerDTO>> UpdateCustomer(long id, Customer model)
         {
             if (id != model.Id)
             {
@@ -128,7 +170,7 @@
             }
 
             try
-            {    
+            {
                 var existingCustomer = await _customerServices.GetCustomerByIdAsync(id);
                 if (existingCustomer == null)
                 {
@@ -137,7 +179,15 @@
                 }
 
                 await _customerServices.UpdateAsync(model);
-                return Ok(existingCustomer);
+
+                var result = new CustomerDTO()
+                {
+                    Id = existingCustomer.Id,
+                    Name = existingCustomer.Name,
+                    JoinDate = existingCustomer.JoinDate,
+                    PhoneNumbers = existingCustomer.PhoneNumbers.Select(p => p.PhoneNumber).ToList()
+                };
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -148,7 +198,7 @@
         }
 
         [HttpDelete("{id:long}")]
-        public async Task<ActionResult<Customer>> DeleteCustomer(long? id, Customer model)
+        public async Task<ActionResult> DeleteCustomer(long? id, Customer model)
         {
             if (id.HasValue && id != model.Id)
             {
