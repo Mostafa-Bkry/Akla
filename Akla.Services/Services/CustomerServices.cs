@@ -81,7 +81,7 @@ namespace Akla.Services.Services
             }
         }
 
-        public async Task AddRangeAsync(IEnumerable<Customer> entities)
+        public async Task AddRangeOfCustomersAsync(IEnumerable<Customer> entities)
         {
             try
             {

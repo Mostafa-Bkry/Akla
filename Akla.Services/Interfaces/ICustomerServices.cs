@@ -9,7 +9,7 @@ namespace Akla.Services.Interfaces
         Task<List<Customer>> GetAllCustomersAsync(Expression<Func<Customer, bool>> predicate, bool isAsNoTracking);
 
         Task AddCustomerAsync(Customer entity);
-        Task AddRangeAsync(IEnumerable<Customer> entities);
+        Task AddRangeOfCustomersAsync(IEnumerable<Customer> entities);
         Task UpdateAsync(Customer entity);
         Task DeleteAsync(long id);
         Task DeleteAsync(Customer entity);
