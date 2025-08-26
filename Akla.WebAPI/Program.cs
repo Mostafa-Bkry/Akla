@@ -1,4 +1,5 @@
 ﻿using Akla.Repository.Repositories;
+using Akla.Services;
 using Akla.SharedData.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,7 +18,7 @@ namespace Akla.WebAPI
             );
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-            builder.Services.AddScoped<CustomerServices>();
+            builder.Services.AddAklaServices();
 
             builder.Services.AddControllers();
 

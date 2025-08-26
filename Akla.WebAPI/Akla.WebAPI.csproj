@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Akla.Repository\Akla.Repository.csproj" />
+    <ProjectReference Include="..\Akla.Services\Akla.Services.csproj" />
     <ProjectReference Include="..\Akla.SharedData\Akla.SharedData.csproj" />
   </ItemGroup>
 

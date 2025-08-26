@@ -14,7 +14,7 @@
         [HttpGet]
         public async Task<ActionResult<List<Customer>>> GetAll()
         {
-            var customers = await _customerServices.GetAll();
+            var customers = await _customerServices.GetAllAsync();
             return Ok(customers);
         }
     }
