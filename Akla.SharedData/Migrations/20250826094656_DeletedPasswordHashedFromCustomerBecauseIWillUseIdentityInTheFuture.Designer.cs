@@ -4,6 +4,7 @@ using Akla.SharedData.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Akla.SharedData.Migrations
 {
     [DbContext(typeof(AklaDbContext))]
-    partial class AklaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250826094656_DeletedPasswordHashedFromCustomerBecauseIWillUseIdentityInTheFuture")]
+    partial class DeletedPasswordHashedFromCustomerBecauseIWillUseIdentityInTheFuture
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,6 +63,11 @@ namespace Akla.SharedData.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");

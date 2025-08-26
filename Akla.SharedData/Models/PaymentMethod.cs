@@ -3,7 +3,7 @@
     public class PaymentMethod : BaseEntity
     {
         [MaxLength(10)]
-        public string Method_Name { get; set; }
+        public string MethodName { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }

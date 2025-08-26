@@ -8,7 +8,7 @@
         [MaxLength(150)]
         public string Street { get; set; }
 
-        public long Customer_Id { get; set; }
+        public long CustomerId { get; set; }
 
         public virtual Customer Customer { get; set; }
     }

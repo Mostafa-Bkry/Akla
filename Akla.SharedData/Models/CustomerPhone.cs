@@ -2,7 +2,7 @@
 {
     public class CustomerPhone : Phone
     {
-        public long Customer_Id { get; set; }
+        public long CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
     }
 }

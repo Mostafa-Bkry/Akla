@@ -6,10 +6,10 @@
         public string Name { get; set; }
 
         [MaxLength(50)]
-        public string Vehicle_Type { get; set; }
+        public string VehicleType { get; set; }
 
         [MaxLength(20)]
-        public string License_Plate { get; set; }
+        public string LicensePlate { get; set; }
 
         [MaxLength(20)]
         public string PrimaryPhoneNumber { get; set; }

@@ -9,12 +9,12 @@
         public string? Description { get; set; }
 
         [MaxLength(50)]
-        public string Discount_Type { get; set; }
+        public string DiscountType { get; set; }
 
-        public decimal Discount_Value { get; set; }
+        public decimal DiscountValue { get; set; }
 
-        public DateTime Start_Date { get; set; }
-        public DateTime End_Date { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public virtual ICollection<Image> Images { get; set; } = new HashSet<Image>();
         public virtual ICollection<MenuItemPromotion> MenuItemPromotions { get; set; } = new HashSet<MenuItemPromotion>();

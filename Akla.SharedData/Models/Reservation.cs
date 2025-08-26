@@ -2,18 +2,18 @@
 {
     public class Reservation : BaseEntity
     {
-        public DateTime Reservatoin_Time { get; set; }
+        public DateTime ReservatoinTime { get; set; }
 
-        public int Party_Size { get; set; }
+        public int PartySize { get; set; }
 
         [MaxLength(20)]
         public string Status { get; set; }
 
         [MaxLength(500)]
-        public string Special_Requests { get; set; }
+        public string SpecialRequests { get; set; }
 
-        public long RestaurantTable_Id { get; set; }
-        public long Customer_Id { get; set; }
+        public long RestaurantTableId { get; set; }
+        public long CustomerId { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual RestaurantTable RestaurantTable { get; set; }

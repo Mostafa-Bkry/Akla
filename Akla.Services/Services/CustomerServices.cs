@@ -55,6 +55,19 @@ namespace Akla.Services.Services
             }
         }
 
+        public async Task<List<Customer>> GetFilteredCustomersAsync(Expression<Func<Customer>> predicate, bool isAsNoTracking)
+        {
+            try
+            {
+                var result = await _customerRepo.GetAllAsync(isAsNoTracking);
+                return result.ToList() ?? new List<Customer>();
+            }
+            catch (Exception ex)
+            {
+                throw new CustomException(ex.Message, ex);
+            }
+        }
+
         public async Task AddCustomerAsync(Customer entity)
         {
             try

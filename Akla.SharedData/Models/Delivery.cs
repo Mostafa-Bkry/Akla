@@ -2,15 +2,15 @@
 {
     public class Delivery : BaseEntity
     {
-        public DateTime Delivery_Time { get; set; }
+        public DateTime DeliveryTime { get; set; }
 
-        public DateTime Dispath_Time { get; set; }
+        public DateTime DispathTime { get; set; }
 
         [MaxLength(20)]
         public string Status { get; set; }
 
-        public long Driver_Id { get; set; }
-        public long Order_Id { get; set; }
+        public long DriverId { get; set; }
+        public long OrderId { get; set; }
 
         public virtual Driver Driver { get; set; }
         public virtual Order Order { get; set; }

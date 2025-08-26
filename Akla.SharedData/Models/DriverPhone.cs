@@ -2,7 +2,7 @@
 {
     public class DriverPhone : Phone
     {
-        public long Driver_Id { get; set; }
+        public long DriverId { get; set; }
         public virtual Driver Driver { get; set; }
     }
 }

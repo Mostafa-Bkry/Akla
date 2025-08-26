@@ -12,7 +12,7 @@
 
         public bool Available { get; set; }
 
-        public int Preparation_Time { get; set; }
+        public int PreparationTime { get; set; }
 
         public virtual ICollection<Image> Images { get; set; } = new HashSet<Image>();
         public virtual ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
