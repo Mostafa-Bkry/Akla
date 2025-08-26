@@ -28,13 +28,25 @@
         }
 
         [HttpGet("search")]
-        public async Task<ActionResult<List<Customer>>> GetAll([FromQuery] string phoneSearch)
+        public async Task<ActionResult<List<CustomerDTO>>> GetAll([FromQuery] string phoneSearch)
         {
             try
             {
                 var customers = await _customerServices
-                        .GetAllCustomersAsync(c => c.PhoneNumbers.Where(phone => phone.PhoneNumber.Contains(phoneSearch)).Any(), isAsNoTracking: true);
-                return Ok(customers ?? new List<Customer>());
+                        .GetAllCustomersAsync(c => c.PhoneNumbers
+                            .Where(phone => phone.PhoneNumber.Contains(phoneSearch))
+                            .Any()
+                        , isAsNoTracking: true);
+
+                var result = customers.Select(c => new CustomerDTO
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    JoinDate = c.JoinDate,
+                    PhoneNumbers = c.PhoneNumbers.Select(p => p.PhoneNumber).ToList()
+                }).ToList();
+
+                return Ok(result ?? new List<CustomerDTO>());
             }
             catch (Exception ex)
             {
