@@ -20,6 +20,16 @@ namespace Akla.WebAPI
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddAklaServices();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", policy =>
+                {
+                    policy.AllowAnyMethod()
+                          .AllowAnyHeader()
+                          .AllowAnyOrigin();
+                });
+            });
+
             builder.Services.AddControllers();
 
             // Add Swagger services
@@ -35,6 +45,8 @@ namespace Akla.WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("MyPolicy");
 
             app.UseAuthorization();
 

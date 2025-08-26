@@ -178,7 +178,10 @@ namespace Akla.WebAPI.Controllers
                     return NotFound(ModelState);
                 }
 
-                await _customerServices.UpdateAsync(model);
+                existingCustomer.Name = model.Name;
+                existingCustomer.JoinDate = model.JoinDate;
+
+                await _customerServices.UpdateAsync(existingCustomer);
 
                 var result = new CustomerDTO()
                 {
