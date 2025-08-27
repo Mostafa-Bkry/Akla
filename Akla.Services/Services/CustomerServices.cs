@@ -2,7 +2,7 @@
 
 namespace Akla.Services.Services
 {
-    public class CustomerServices : ICustomerServices
+    public class CustomerServices : IAPIServices<Customer>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<Customer> _customerRepo;
@@ -13,7 +13,7 @@ namespace Akla.Services.Services
             _customerRepo = _unitOfWork.Repository<Customer>();
         }
 
-        public async Task<Customer> GetCustomerByIdAsync(long id)
+        public async Task<Customer> GetByIdAsync(long id)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace Akla.Services.Services
             }
         }
 
-        public async Task<List<Customer>> GetAllCustomersAsync(bool isAsNoTracking)
+        public async Task<List<Customer>> GetAllAsync(bool isAsNoTracking)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Akla.Services.Services
             }
         }
 
-        public async Task<List<Customer>>GetAllCustomersAsync(Expression<Func<Customer, bool>> predicate, bool isAsNoTracking)
+        public async Task<List<Customer>>GetAllAsync(Expression<Func<Customer, bool>> predicate, bool isAsNoTracking)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace Akla.Services.Services
             }
         }
 
-        public async Task AddCustomerAsync(Customer entity)
+        public async Task AddAsync(Customer entity)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace Akla.Services.Services
             }
         }
 
-        public async Task AddRangeOfCustomersAsync(IEnumerable<Customer> entities)
+        public async Task AddRangeAsync(IEnumerable<Customer> entities)
         {
             try
             {

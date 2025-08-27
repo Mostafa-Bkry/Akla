@@ -1,15 +1,12 @@
-﻿using Akla.SharedData.Models;
-using Castle.Core.Resource;
-
-namespace Akla.WebAPI.Controllers
+﻿namespace Akla.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private readonly ICustomerServices _customerServices;
+        private readonly IAPIServices<Customer> _customerServices;
 
-        public CustomersController(ICustomerServices customerServices)
+        public CustomersController(IAPIServices<Customer> customerServices)
         {
             _customerServices = customerServices;
         }
@@ -19,7 +16,7 @@ namespace Akla.WebAPI.Controllers
         {
             try
             {
-                var customers = await _customerServices.GetAllCustomersAsync(isAsNoTracking: true);
+                var customers = await _customerServices.GetAllAsync(isAsNoTracking: true);
 
                 var result = customers.Select(c => new CustomerDTO
                 {
@@ -45,7 +42,7 @@ namespace Akla.WebAPI.Controllers
             try
             {
                 var customers = await _customerServices
-                        .GetAllCustomersAsync(c => c.PhoneNumbers
+                        .GetAllAsync(c => c.PhoneNumbers
                             .Where(phone => phone.PhoneNumber.Contains(phoneSearch))
                             .Any()
                         , isAsNoTracking: true);
@@ -73,7 +70,7 @@ namespace Akla.WebAPI.Controllers
         {
             try
             {
-                var customer = await _customerServices.GetCustomerByIdAsync(id);
+                var customer = await _customerServices.GetByIdAsync(id);
 
                 if (customer != null)
                 {
@@ -103,8 +100,8 @@ namespace Akla.WebAPI.Controllers
         {
             try
             {
-                await _customerServices.AddCustomerAsync(model);
-                var customer = await _customerServices.GetCustomerByIdAsync(model.Id);
+                await _customerServices.AddAsync(model);
+                var customer = await _customerServices.GetByIdAsync(model.Id);
 
                 if (customer != null)
                 {
@@ -133,9 +130,9 @@ namespace Akla.WebAPI.Controllers
         {
             try
             {
-                await _customerServices.AddRangeOfCustomersAsync(model);
+                await _customerServices.AddRangeAsync(model);
                 var customers = await _customerServices
-                    .GetAllCustomersAsync(c => model.Contains(c), true);
+                    .GetAllAsync(c => model.Contains(c), true);
 
                 if (customers != null && customers.Count == model.Count)
                 {
@@ -171,7 +168,7 @@ namespace Akla.WebAPI.Controllers
 
             try
             {
-                var existingCustomer = await _customerServices.GetCustomerByIdAsync(id);
+                var existingCustomer = await _customerServices.GetByIdAsync(id);
                 if (existingCustomer == null)
                 {
                     ModelState.AddModelError("", $"Customer With Id = {id} Not Found");
@@ -211,7 +208,7 @@ namespace Akla.WebAPI.Controllers
 
             try
             {
-                var existingCustomer = await _customerServices.GetCustomerByIdAsync(id ?? model.Id);
+                var existingCustomer = await _customerServices.GetByIdAsync(id ?? model.Id);
                 if (existingCustomer == null)
                 {
                     ModelState.AddModelError("", $"Customer With Id = {id} Not Found");

@@ -7,7 +7,7 @@ namespace Akla.Services
     {
         public static IServiceCollection AddAklaServices(this IServiceCollection services)
         {
-            services.AddScoped<ICustomerServices, CustomerServices>();
+            services.AddScoped<IAPIServices<Customer>, CustomerServices>();
             return services;
         }
     }
