@@ -1,36 +1,37 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Akla.UI</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿<div class="page">
+    <!-- Sidebar -->
+    <div class="sidebar @(collapseNavMenu ? "collapsed" : "")">
+        <div class="sidebar-header">
+            <a class="navbar-brand fw-bold text-warning" href="">
+                <i class="fas fa-utensils me-2"></i> <span>Akla</span>
+            </a>
+            <button class="btn-toggle" @onclick="ToggleNavMenu">
+                <i class="fas @(collapseNavMenu ? "fa-bars" : "fa-times")"></i>
+            </button>
+        </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="nav flex-column">
-        <div class="nav-item px-3">
+        <nav class="nav flex-column mt-4">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                <i class="fas fa-home"></i> <span>Home</span>
             </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            <NavLink class="nav-link" href="menu">
+                <i class="fas fa-book-open"></i> <span>Menu</span>
             </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            <NavLink class="nav-link" href="order">
+                <i class="fas fa-shopping-cart"></i> <span>Order</span>
             </NavLink>
-        </div>
-    </nav>
+            <NavLink class="nav-link" href="reservation">
+                <i class="fas fa-calendar-check"></i> <span>Reservations</span>
+            </NavLink>
+            <NavLink class="nav-link" href="about">
+                <i class="fas fa-info-circle"></i> <span>About</span>
+            </NavLink>
+        </nav>
+    </div>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
     private void ToggleNavMenu()
     {

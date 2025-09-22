@@ -2,6 +2,102 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="home-page">
 
-Welcome to your new app.
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center justify-content-center text-center fade-in">
+        <div>
+            <h1 class="display-4 fw-bold">Welcome to Akla Restaurant</h1>
+            <p class="lead">Delicious food, cozy atmosphere, and quick online service</p>
+            <a href="/menu" class="btn btn-lg btn-warning mt-3">View Menu</a>
+        </div>
+    </section>
+
+    <!-- Action Cards -->
+    <section class="actions container text-center my-5 py-5">
+        <h2 class="mb-4 fade-in delay-1" style="color: white">What would you like to do?</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4 fade-in delay-1">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <i class="fas fa-utensils fa-2x mb-3 text-warning"></i>
+                        <h5 class="card-title">View Menu</h5>
+                        <p class="card-text">Explore our delicious meals and drinks.</p>
+                        <a href="/menu" class="btn btn-outline-warning">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 fade-in delay-2">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <i class="fas fa-shopping-cart fa-2x mb-3 text-success"></i>
+                        <h5 class="card-title">Order Online</h5>
+                        <p class="card-text">Place an order and enjoy fast delivery.</p>
+                        <a href="/order" class="btn btn-outline-success">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 fade-in delay-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <i class="fas fa-calendar-alt fa-2x mb-3 text-primary"></i>
+                        <h5 class="card-title">Book a Table</h5>
+                        <p class="card-text">Reserve a spot at our cozy restaurant.</p>
+                        <a href="/reservation" class="btn btn-outline-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4 fade-in delay-3">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <i class="fas fa-info-circle fa-2x mb-3 text-danger"></i>
+                        <h5 class="card-title">About Us</h5>
+                        <p class="card-text">Learn more about Akla and our story.</p>
+                        <a href="/about" class="btn btn-outline-danger">Go</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties -->
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="mb-4 fade-in" style="color: white">Our Specialties</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4 fade-in delay-1">
+                    <div class="card shadow-sm h-100 specialty-card">
+                        <img src="images/GrilledSteak.jpg" class="card-img-top" alt="Grilled Steak">
+                        <div class="card-body">
+                            <h5 class="card-title">Grilled Steak</h5>
+                            <p class="card-text text-muted">Perfectly cooked with our secret spices.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in delay-2">
+                    <div class="card shadow-sm h-100 specialty-card">
+                        <img src="images/FreshPasta.jpg" class="card-img-top" alt="Fresh Pasta">
+                        <div class="card-body">
+                            <h5 class="card-title">Fresh Pasta</h5>
+                            <p class="card-text text-muted">Handmade daily with authentic Italian taste.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in delay-3">
+                    <div class="card shadow-sm h-100 specialty-card">
+                        <img src="images/SignatureDessert.jpg" class="card-img-top" alt="Signature Dessert">
+                        <div class="card-body">
+                            <h5 class="card-title">Signature Dessert</h5>
+                            <p class="card-text text-muted">Sweet endings to complete your meal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@code {
+    // Later: Add dynamic specials or user interactions here
+}

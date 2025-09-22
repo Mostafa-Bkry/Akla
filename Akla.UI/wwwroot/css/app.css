@@ -1,5 +1,6 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: url("/images/hero.jpg") no-repeat center center/cover;
 }
 
 h1:focus {
@@ -17,7 +18,7 @@ a, .btn-link {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -111,4 +112,100 @@ code {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
+}
+
+/* Sidebar base */
+.sidebar {
+    /* Removed fixed positioning */
+    position: relative;
+    height: 100%;
+    width: 240px;
+    background: #212529;
+    color: #fff;
+    padding: 1rem;
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+}
+
+    /* Collapsed state */
+    .sidebar.collapsed {
+        width: 70px;
+    }
+
+        .sidebar.collapsed .nav-link span,
+        .sidebar.collapsed .navbar-brand {
+            display: none;
+        }
+
+        .sidebar.collapsed .nav-link i {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+/* Sidebar header */
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Links */
+.sidebar .nav-link {
+    display: flex;
+    align-items: center; /* ensures icons + text are aligned */
+    color: #f8f9fa;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+    .sidebar .nav-link i {
+        width: 20px; /* fixed width for perfect alignment */
+        text-align: center;
+        margin-right: 10px;
+    }
+
+.sidebar.collapsed .nav-link i {
+    margin-right: 0;
+    text-align: center; /* keep centered under toggle */
+}
+
+/* Hover + Active states */
+.sidebar .nav-link:hover {
+    color: #ffc107;
+    background: rgba(255, 193, 7, 0.15);
+    transform: translateX(3px);
+}
+
+.sidebar .nav-link.active {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* Toggle button */
+.btn-toggle {
+    background: none;
+    border: none;
+    color: #f8f9fa;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Page layout */
+.page {
+    display: flex; /* sidebar + content side by side */
+}
+
+    /* Page content spacing */
+    .page .content {
+        flex: 1;
+        padding: 1rem;
+        transition: margin-left 0.3s ease;
+    }
+
+.sidebar.collapsed ~ .content {
+    margin-left: 70px;
 }
