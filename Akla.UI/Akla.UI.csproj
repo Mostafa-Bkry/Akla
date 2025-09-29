@@ -21,7 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Components\CustomerComponent\" />
+    <Folder Include="Components\CustomerComponents\" />
+    <Folder Include="Components\MenuComponents\" />
+    <Folder Include="Components\AboutComponents\" />
+    <Folder Include="Components\ReservationComponents\" />
+    <Folder Include="Components\OrderComponents\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,124 @@
+﻿@page "/Menu"
+
+<PageTitle>Menu</PageTitle>
+
+<div class="menu-page container py-5">
+    <h1 class="text-center mb-5 text-white fade-in">Our Menu</h1>
+
+    <!-- Tabs -->
+    <ul class="nav nav-pills justify-content-center mb-4" id="menuTabs">
+        <li class="nav-item">
+            <button class="nav-link @(activeCategory == "All" ? "active" : "")"
+                    @onclick='() => ChangeCategory("All")'>
+                All
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link @(activeCategory == "Starters" ? "active" : "")"
+                    @onclick='() => ChangeCategory(" Starters")'>
+                Starters
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link @(activeCategory == "Main" ? "active" : "")"
+                    @onclick='() => ChangeCategory(" Main")'>
+                Main Dishes
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link @(activeCategory == "Desserts" ? "active" : "")"
+                    @onclick='() => ChangeCategory(" Desserts")'>
+                Desserts
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link @(activeCategory == "Drinks" ? "active" : "")"
+                    @onclick='() => ChangeCategory(" Drinks")'>
+                Drinks
+            </button>
+        </li>
+    </ul>
+
+    <!-- Cards -->
+    <div class="row fade-container @(isFadingOut ? "fade-out" : "fade-in")">
+        @foreach (var item in filteredMenu)
+        {
+            <div class="col-md-4 mb-4 fade-item" @key="item.Name + animationKey">
+                <div class="card custom-card shadow-sm h-100">
+                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name" />
+                    <div class="card-body custom-card">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text text-muted">@item.Description</p>
+                        <span class="fw-bold text-success">@item.Price.ToString("C")</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private string activeCategory = "All";
+    private string animationKey = Guid.NewGuid().ToString();
+    private List<MenuItem> filteredMenu = new();
+    private bool isFadingOut = false;
+
+    protected override void OnInitialized()
+    {
+        FilterMenu();
+    }
+
+    private async void ChangeCategory(string category)
+    {
+        if (category == activeCategory) return;
+
+        isFadingOut = true;
+        StateHasChanged();
+
+        // Wait for fade-out animation (400ms)
+        await Task.Delay(400);
+
+        activeCategory = category;
+        FilterMenu();
+        animationKey = Guid.NewGuid().ToString();
+        isFadingOut = false;
+        StateHasChanged();
+    }
+
+    private void FilterMenu()
+    {
+        if (activeCategory == "All")
+            filteredMenu = menuItems;
+        else
+            filteredMenu = menuItems.Where(i => i.Category == activeCategory).ToList();
+    }
+
+    private List<MenuItem> menuItems = new()
+    {
+        new MenuItem { Name="Bruschetta", Category="Starters", Price=6.99m, Description="Grilled bread with tomato and basil.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Caesar Salad", Category="Starters", Price=7.99m, Description="Crisp romaine with Caesar dressing.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Grilled Salmon", Category="Main", Price=16.99m, Description="Salmon fillet with herbs and lemon.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Steak Frites", Category="Main", Price=18.99m, Description="Juicy steak with crispy fries.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Chocolate Lava Cake", Category="Desserts", Price=8.99m, Description="Rich chocolate cake with molten center.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Tiramisu", Category="Desserts", Price=7.99m, Description="Classic Italian dessert with coffee flavor.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Lemonade", Category="Drinks", Price=3.99m, Description="Freshly squeezed lemonade.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Red Wine", Category="Drinks", Price=5.99m, Description="Glass of house red wine.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Bruschetta", Category="Starters", Price=6.99m, Description="Grilled bread with tomato and basil.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Caesar Salad", Category="Starters", Price=7.99m, Description="Crisp romaine with Caesar dressing.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Grilled Salmon", Category="Main", Price=16.99m, Description="Salmon fillet with herbs and lemon.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Steak Frites", Category="Main", Price=18.99m, Description="Juicy steak with crispy fries.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Chocolate Lava Cake", Category="Desserts", Price=8.99m, Description="Rich chocolate cake with molten center.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Tiramisu", Category="Desserts", Price=7.99m, Description="Classic Italian dessert with coffee flavor.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Lemonade", Category="Drinks", Price=3.99m, Description="Freshly squeezed lemonade.", ImageUrl="images/SignatureDessert.jpg"},
+        new MenuItem { Name="Red Wine", Category="Drinks", Price=5.99m, Description="Glass of house red wine.", ImageUrl="images/SignatureDessert.jpg"},
+    };
+
+    public class MenuItem
+    {
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
+        public string ImageUrl { get; set; }
+    }
+}
